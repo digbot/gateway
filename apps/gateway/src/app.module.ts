@@ -4,15 +4,15 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { IntrospectAndCompose, RemoteGraphQLDataSource } from '@apollo/gateway';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-//import { authContext } from './auth.context';
+import { authContext } from './auth.context';
 
 @Module({
   imports: [
     GraphQLModule.forRoot<ApolloGatewayDriverConfig>({
       driver: ApolloGatewayDriver,
       server: {
-    //   cors: true,
-      //  context: authContext,
+       /// cors: true,
+        context: authContext,
       },
       gateway: {
         supergraphSdl: new IntrospectAndCompose({
